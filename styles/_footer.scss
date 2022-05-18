@@ -105,3 +105,39 @@ footer {
   width: 32px;
   height: auto;
 }
+
+@media(max-width: 1080px) {
+  .music {
+    gap: 6px 18px ;
+  }
+  .player {
+    column-gap: 24px;
+  }
+  .player > svg {
+    width: 24px;
+  }
+  .player .player__icon {
+    column-gap: 6px;
+  }
+
+  .controls {
+    column-gap: 26px;
+  }
+  .controls svg {
+    width: 26px;
+  }
+}
+
+@media(max-width: 768px) {
+  .controls, .music {
+    display: none;
+    visibility: hidden;
+  }
+  .player {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .player .player__icon {
+    column-gap: 30px;
+  }
+}
