@@ -58,12 +58,16 @@ main {
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding-top: 24px;
-  padding-bottom: 228px;
+  padding: 24px 0 228px;
   margin: auto auto 0;
   max-width: 1440px;
 }
 
+@media (max-width: 1080px) {
+  .main__info {
+    padding: 24px 24px 150px;
+  }
+}
 .main__info .logo {
   width: 250px;
   height: auto;
@@ -116,9 +120,47 @@ header {
   width: 100%;
 }
 
-header nav, header .user {
+header nav, .user {
   width: 100%;
   max-width: 330px;
+}
+
+#button__toggle {
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  visibility: hidden;
+  row-gap: 4px;
+  background: transparent;
+  transition: all 0.6s;
+}
+
+#button__mobile span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #c0c0c0;
+  transition: all 0.6s;
+}
+
+#button__mobile span:nth-child(even) {
+  width: 18px;
+}
+
+#button__mobile.active {
+  transform: rotate(180deg);
+}
+
+#button__mobile.active span:nth-child(even) {
+  opacity: 0;
+}
+
+#button__mobile.active span:nth-child(1) {
+  transform: rotate(45deg) translateY(8.5px);
+}
+
+#button__mobile.active span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-8px);
 }
 
 .header__content {
@@ -131,7 +173,7 @@ header nav, header .user {
   max-width: 1440px;
 }
 
-.navigation {
+#navigation {
   display: flex;
   align-items: center;
   -moz-column-gap: 56px;
@@ -139,16 +181,16 @@ header nav, header .user {
   list-style: none;
 }
 
-.navigation li {
+#navigation li {
   position: relative;
 }
 
-.navigation li a, .user span {
+#navigation li a, .user span {
   font-size: 1.125rem;
   line-height: 1.25rem;
 }
 
-.navigation li.active::before {
+#navigation li.active::before {
   content: "";
   position: absolute;
   bottom: 0;
@@ -178,8 +220,8 @@ header nav, header .user {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: linear-gradient(90.35deg, #4ac08f 2.49%, #2fb4ff 101.2%, #2fb4ff 101.2%);
   padding: 2px;
+  background: linear-gradient(90.35deg, #4ac08f 2.49%, #2fb4ff 101.2%, #2fb4ff 101.2%);
 }
 
 .user__icon img {
@@ -190,6 +232,88 @@ header nav, header .user {
      object-fit: cover;
 }
 
+@media (max-width: 1080px) {
+  header nav, .user {
+    max-width: 280px;
+  }
+
+  #navigation {
+    -moz-column-gap: 32px;
+         column-gap: 32px;
+  }
+}
+@media (max-width: 768px) {
+  #button__mobile, .header__content h1, .user {
+    z-index: 3;
+  }
+
+  #button__mobile {
+    display: flex;
+    visibility: visible;
+  }
+
+  #navigation {
+    position: fixed;
+    top: -100vh;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100vh;
+    background: rgba(20, 6, 31, 0.85);
+    -webkit-backdrop-filter: blur(4px);
+            backdrop-filter: blur(4px);
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 48px;
+    transition: all 1s;
+  }
+
+  #navigation.active {
+    transform: translateY(100vh);
+  }
+
+  #navigation li a {
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
+
+  .header__content h1 {
+    flex: 1;
+    text-align: center;
+  }
+
+  header nav {
+    max-width: 0;
+  }
+
+  .user {
+    max-width: 48px;
+  }
+
+  .user span {
+    display: none;
+    visibility: hidden;
+  }
+}
+@media (max-width: 650px) {
+  .header__content h1 {
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+  }
+
+  #button__mobile {
+    width: 36px;
+  }
+
+  .user {
+    max-width: 36px;
+  }
+
+  .user__icon {
+    width: 36px;
+    height: 36px;
+  }
+}
 body {
   background: #14061f;
 }
@@ -312,4 +436,49 @@ footer {
 .controls svg {
   width: 32px;
   height: auto;
+}
+
+@media (max-width: 1080px) {
+  .music {
+    gap: 6px 18px;
+  }
+
+  .player {
+    -moz-column-gap: 24px;
+         column-gap: 24px;
+  }
+
+  .player > svg {
+    width: 24px;
+  }
+
+  .player .player__icon {
+    -moz-column-gap: 6px;
+         column-gap: 6px;
+  }
+
+  .controls {
+    -moz-column-gap: 26px;
+         column-gap: 26px;
+  }
+
+  .controls svg {
+    width: 26px;
+  }
+}
+@media (max-width: 768px) {
+  .controls, .music {
+    display: none;
+    visibility: hidden;
+  }
+
+  .player {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .player .player__icon {
+    -moz-column-gap: 30px;
+         column-gap: 30px;
+  }
 }/*# sourceMappingURL=styles.css.map */
