@@ -15,8 +15,14 @@
   <div class="app">
     <header>
       <div class="header__content">
+        <button type="button" id="button__mobile" onclick="handleToggle()">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
         <nav>
-          <ul class="navigation">
+          <ul id="navigation">
             <li>
               <a href="/">Início</a>
             </li>
@@ -87,6 +93,14 @@
       </div>
     </footer>
   </div>
+  <script>
+    function handleToggle() {
+      const buttonMobile = document.getElementById('button__mobile')
+      const navigation = document.getElementById('navigation')
+      buttonMobile.classList.toggle('active')
+      navigation.classList.toggle('active')
+    }
+  </script>
 </body>
 
 </html>
